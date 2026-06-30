@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Error (Prank)</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #0078d7;
+    color: #ffffff;
+    overflow: hidden;
+    cursor: none;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+#wrap {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+#content {
+    margin-left: 8%;
+    max-width: 900px;
+}
+
+.face {
+    font-size: 110px;
+    line-height: 1;
+}
+
+.msg {
+    font-size: 38px;
+    margin-top: 20px;
+    line-height: 1.4;
+}
+
+.small {
+    font-size: 22px;
+    margin-top: 35px;
+}
+
+.bottom {
+    display: flex;
+    gap: 35px;
+    align-items: flex-start;
+    margin-top: 40px;
+}
+
+.qr {
+    width: 140px;
+    height: 140px;
+    background: #ffffff;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div id="wrap">
+    <div id="content">
+
+        <div class="face">:(</div>
+
+        <div class="msg">
+            A simulated system error has occurred.<br>
+            Please call us at +1 650 123 4567 to fix the issue.
+        </div>
+
+        <div class="large">
+            <span id="percent">0%</span> Complete
+        </div>
+
+        <div class="bottom">
+            <div class="qr">
+                Click here<br>To Verify
+            </div>
+
+            <div class="small">
+                Stop Code:<br>
+                SIMULATED_SYSTEM_FAILURE #726534893402418967148
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+// Enter fullscreen after the first click
+document.addEventListener("click", async function () {
+    if (!document.fullscreenElement) {
+        try {
+            await document.documentElement.requestFullscreen();
+        } catch (e) {
+            console.log("Fullscreen request failed:", e);
+        }
+    }
+}, { once: true });
+
+// Animate percentage
+let p = 0;
+
+const percent = document.getElementById("percent");
+
+const timer = setInterval(() => {
+    p++;
+    percent.textContent = p + "%";
+
+    if (p >= 100) {
+        clearInterval(timer);
+    }
+}, 80);
+
+// Keep viewport height correct on resize
+function resizePage() {
+    document.body.style.height = window.innerHeight + "px";
+}
+
+window.addEventListener("resize", resizePage);
+resizePage();
+</script>
+
+</body>
+</html>
